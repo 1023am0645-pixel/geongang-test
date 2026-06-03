@@ -122,14 +122,6 @@ function renderBoard() {
         center.className = "center-tile";
         center.style.gridColumn = `${(index % 3) + 1}`;
         center.style.gridRow = `${Math.floor(index / 3) + 1}`;
-        center.style.setProperty("--tilt", `${typeIndex % 2 === 0 ? -1.2 : 1.2}deg`);
-
-        const image = document.createElement("img");
-        image.className = "center-character";
-        image.src = type.image;
-        image.alt = "";
-        center.append(image);
-
         const label = document.createElement("span");
         label.className = "center-label";
         label.textContent = type.name;
@@ -146,7 +138,6 @@ function renderBoard() {
       tile.dataset.itemId = itemId;
       tile.style.gridColumn = `${(index % 3) + 1}`;
       tile.style.gridRow = `${Math.floor(index / 3) + 1}`;
-      tile.style.setProperty("--tilt", `${[-1.4, 0.7, -0.6, 1.2, -1, 0.9, -0.8, 1.4][entry]}deg`);
       tile.textContent = type.items[entry];
       const textLength = type.items[entry].replace(/\s/g, "").length;
       if (textLength > 25) {
