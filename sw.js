@@ -1,4 +1,4 @@
-const CACHE_NAME = "geongangdeonggyun-test-v5";
+const CACHE_NAME = "geongangdeonggyun-test-v6";
 const PRECACHE_URLS = [
   "./",
   "./index.html",

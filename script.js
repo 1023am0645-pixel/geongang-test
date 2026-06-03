@@ -91,7 +91,6 @@ const cardTemplate = document.querySelector("#typeCardTemplate");
 
 const gridOrder = [0, 1, 2, 3, "center", 4, 5, 6, 7];
 const tabIconNames = ["smile", "heart", "star", "sparkles"];
-const tileIconNames = ["sparkles", "heart", "star", "smile", "target", "message-circle", "check-circle", "gamepad-2"];
 
 const ICON_PATHS = {
   "arrow-left": '<path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>',
@@ -191,7 +190,7 @@ function renderBoard() {
       tile.dataset.itemId = itemId;
       tile.style.gridColumn = `${(index % 3) + 1}`;
       tile.style.gridRow = `${Math.floor(index / 3) + 1}`;
-      tile.append(createIcon(tileIconNames[entry % tileIconNames.length], "tile-icon"), createTextSpan(type.items[entry], "tile-label"));
+      tile.append(createTextSpan(type.items[entry], "tile-label"));
       const textLength = type.items[entry].replace(/\s/g, "").length;
       if (textLength > 25) {
         tile.classList.add("tile-dense");
