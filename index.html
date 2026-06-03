@@ -23,16 +23,23 @@
           </span>
           <span class="title-test">TEST</span>
         </h1>
-        <p class="hero-copy">'이건 나야!'라는 생각이 들면 터치해 주세요.</p>
+        <figure class="hero-character-panel" aria-label="건이, 강이, 균이, 덩이 캐릭터">
+          <span class="hero-float-icon hero-float-icon-left" data-icon="sparkles" aria-hidden="true"></span>
+          <img src="assets/character-grid.png" alt="건이, 강이, 균이, 덩이 캐릭터 모음" />
+          <span class="hero-float-icon hero-float-icon-right" data-icon="heart" aria-hidden="true"></span>
+        </figure>
+        <p class="hero-copy"><span class="hero-copy-icon" data-icon="sparkles" aria-hidden="true"></span><span>'이건 나야!'라는 생각이 들면 터치해 주세요.</span><span class="hero-copy-icon" data-icon="heart" aria-hidden="true"></span></p>
       </header>
 
       <section class="status-panel" aria-label="선택 현황">
         <div class="step-summary">
+          <span class="status-icon" data-icon="gamepad-2" aria-hidden="true"></span>
           <strong id="currentTypeName">건이</strong>
           <span id="stepCount">1 / 4</span>
         </div>
         <div class="step-tabs" id="stepTabs" aria-label="캐릭터 보드 이동"></div>
         <div class="selected-count">
+          <span class="status-icon status-icon-heart" data-icon="heart" aria-hidden="true"></span>
           <span class="count-number" id="selectedCount">0</span>
           <span>개 선택</span>
         </div>
@@ -49,9 +56,9 @@
 
     <dialog class="result-dialog" id="resultDialog">
       <div class="result-card" id="resultCard">
-        <button class="close-button" type="button" id="closeDialog" aria-label="결과 닫기">×</button>
+        <button class="close-button" type="button" id="closeDialog" aria-label="결과 닫기"><span data-icon="x" aria-hidden="true"></span></button>
         <div class="result-mascots" id="resultMascots" aria-hidden="true"></div>
-        <p class="result-kicker">건강덩균 TEST 결과</p>
+        <p class="result-kicker"><span data-icon="trophy" aria-hidden="true"></span><span>건강덩균 TEST 결과</span></p>
         <h2 id="resultTitle"></h2>
         <div class="dialog-actions">
           <button class="ghost-button" type="button" id="keepChoosingButton">계속 고르기</button>

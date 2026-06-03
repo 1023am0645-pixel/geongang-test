@@ -9,6 +9,7 @@ const assetPaths = [
   "assets/gyuni-front.jpeg",
 ];
 
+const htmlAssetPaths = ["assets/character-grid.png"];
 const cssAssetPaths = ["assets/fonts/KyoboHandwriting2019.otf"];
 
 function mimeType(path) {
@@ -27,6 +28,12 @@ for (const path of assetPaths) {
   const data = await readFile(new URL(path, root));
   const uri = `data:${mimeType(path)};base64,${data.toString("base64")}`;
   js = js.replaceAll(path, uri);
+}
+
+for (const path of htmlAssetPaths) {
+  const data = await readFile(new URL(path, root));
+  const uri = `data:${mimeType(path)};base64,${data.toString("base64")}`;
+  html = html.replaceAll(path, uri);
 }
 
 for (const path of cssAssetPaths) {

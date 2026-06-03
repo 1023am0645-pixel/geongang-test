@@ -90,6 +90,59 @@ const resultMascots = document.querySelector("#resultMascots");
 const cardTemplate = document.querySelector("#typeCardTemplate");
 
 const gridOrder = [0, 1, 2, 3, "center", 4, 5, 6, 7];
+const tabIconNames = ["smile", "heart", "star", "sparkles"];
+const tileIconNames = ["sparkles", "heart", "star", "smile", "target", "message-circle", "check-circle", "gamepad-2"];
+
+const ICON_PATHS = {
+  "arrow-left": '<path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>',
+  "arrow-right": '<path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>',
+  "check-circle": '<path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/>',
+  "gamepad-2": '<line x1="6" x2="10" y1="11" y2="11"/><line x1="8" x2="8" y1="9" y2="13"/><line x1="15" x2="15.01" y1="12" y2="12"/><line x1="18" x2="18.01" y1="10" y2="10"/><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.544-.604-6.584-.702-7.41A4 4 0 0 0 17.32 5z"/>',
+  heart: '<path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>',
+  "message-circle": '<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>',
+  "rotate-ccw": '<path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/>',
+  smile: '<circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/>',
+  sparkles: '<path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/>',
+  star: '<path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.12 2.12 0 0 0 1.595 1.16l5.166.751a.53.53 0 0 1 .294.904l-3.736 3.644a2.12 2.12 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.12 2.12 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.12 2.12 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.75a2.12 2.12 0 0 0 1.596-1.16z"/>',
+  target: '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>',
+  trophy: '<path d="M10 14.66v1.626a2 2 0 0 1-.976 1.696A5 5 0 0 0 7 22h10a5 5 0 0 0-2.024-4.018A2 2 0 0 1 14 16.286V14.66"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M6 9a6 6 0 0 0 12 0V3a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1z"/><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>',
+  x: '<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
+};
+
+function createIcon(name, className = "") {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("fill", "none");
+  svg.setAttribute("stroke", "currentColor");
+  svg.setAttribute("stroke-width", "2.35");
+  svg.setAttribute("stroke-linecap", "round");
+  svg.setAttribute("stroke-linejoin", "round");
+  svg.setAttribute("aria-hidden", "true");
+  svg.setAttribute("focusable", "false");
+  svg.classList.add("lucide-icon");
+  className.split(/\s+/).filter(Boolean).forEach((name) => svg.classList.add(name));
+  svg.innerHTML = ICON_PATHS[name] || ICON_PATHS.sparkles;
+  return svg;
+}
+
+function createTextSpan(text, className) {
+  const span = document.createElement("span");
+  span.className = className;
+  span.textContent = text;
+  return span;
+}
+
+function setButtonContent(button, iconName, label) {
+  button.innerHTML = "";
+  button.append(createIcon(iconName, "button-icon"), createTextSpan(label, "button-label"));
+}
+
+function hydrateInlineIcons(root = document) {
+  root.querySelectorAll("[data-icon]").forEach((placeholder) => {
+    const icon = createIcon(placeholder.dataset.icon, placeholder.className);
+    placeholder.replaceWith(icon);
+  });
+}
 
 function renderStepTabs() {
   stepTabs.innerHTML = "";
@@ -98,7 +151,7 @@ function renderStepTabs() {
     const tab = document.createElement("button");
     tab.className = "step-tab";
     tab.type = "button";
-    tab.textContent = type.name;
+    tab.append(createIcon(tabIconNames[index], "tab-icon"), createTextSpan(type.name, "tab-label"));
     tab.style.setProperty("--tab-color", type.color);
     tab.style.setProperty("--tab-dark", type.dark);
     tab.addEventListener("click", () => setCurrentIndex(index, true));
@@ -138,7 +191,7 @@ function renderBoard() {
       tile.dataset.itemId = itemId;
       tile.style.gridColumn = `${(index % 3) + 1}`;
       tile.style.gridRow = `${Math.floor(index / 3) + 1}`;
-      tile.textContent = type.items[entry];
+      tile.append(createIcon(tileIconNames[entry % tileIconNames.length], "tile-icon"), createTextSpan(type.items[entry], "tile-label"));
       const textLength = type.items[entry].replace(/\s/g, "").length;
       if (textLength > 25) {
         tile.classList.add("tile-dense");
@@ -214,10 +267,11 @@ function updateStatus() {
   });
 
   if (currentIndex === TYPES.length - 1) {
-    nextButton.textContent = selected.size === 0 ? "문장 선택 후 결과 보기" : "결과 보기";
+    const label = selected.size === 0 ? "문장 선택 후 결과 보기" : "결과 보기";
+    setButtonContent(nextButton, selected.size === 0 ? "sparkles" : "trophy", label);
     nextButton.disabled = selected.size === 0;
   } else {
-    nextButton.textContent = "다음";
+    setButtonContent(nextButton, "arrow-right", "다음");
     nextButton.disabled = false;
   }
 }
@@ -289,6 +343,11 @@ function registerServiceWorker() {
   });
 }
 
+hydrateInlineIcons();
+setButtonContent(resetButton, "rotate-ccw", "초기화");
+setButtonContent(prevButton, "arrow-left", "이전");
+setButtonContent(keepChoosingButton, "arrow-left", "계속 고르기");
+setButtonContent(restartButton, "rotate-ccw", "다시 하기");
 renderStepTabs();
 renderBoard();
 updateStatus();

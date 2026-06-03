@@ -1,4 +1,4 @@
-const CACHE_NAME = "geongangdeonggyun-test-v3";
+const CACHE_NAME = "geongangdeonggyun-test-v5";
 const PRECACHE_URLS = [
   "./",
   "./index.html",
@@ -6,6 +6,7 @@ const PRECACHE_URLS = [
   "./script.js",
   "./manifest.webmanifest",
   "./assets/fonts/KyoboHandwriting2019.otf",
+  "./assets/character-grid.png",
   "./assets/geoni-front.jpeg",
   "./assets/gangi-front.jpeg",
   "./assets/deongi-front.jpeg",
