@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#74d9d3" />
+    <meta name="description" content="건이, 강이, 덩이, 균이 유형을 고르는 건강덩균 TEST" />
+    <title>건강덩균 TEST</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="assets/geoni-front.jpeg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@700&family=Nanum+Pen+Script&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <div class="brand-row" aria-hidden="true">
+          <span class="book-icon"></span>
+          <span class="pencil-icon"></span>
+        </div>
+        <h1 class="main-title" aria-label="건강덩균 테스트">
+          <span class="title-word">
+            <span class="title-char title-mint">건</span><span class="title-char title-pink">강</span><span class="title-char title-yellow">덩</span><span class="title-char title-orange">균</span>
+          </span>
+          <span class="title-test">TEST</span>
+        </h1>
+        <p class="hero-copy">'이건 나야!'라는 생각이 들면 터치해 주세요.</p>
+      </header>
+
+      <section class="status-panel" aria-label="선택 현황">
+        <div class="step-summary">
+          <strong id="currentTypeName">건이</strong>
+          <span id="stepCount">1 / 4</span>
+        </div>
+        <div class="step-tabs" id="stepTabs" aria-label="캐릭터 보드 이동"></div>
+        <div class="selected-count">
+          <span class="count-number" id="selectedCount">0</span>
+          <span>개 선택</span>
+        </div>
+      </section>
+
+      <section class="board" id="board" aria-label="건강덩균 테스트 선택 보드"></section>
+
+      <div class="bottom-bar">
+        <button class="ghost-button" type="button" id="resetButton">초기화</button>
+        <button class="ghost-button" type="button" id="prevButton">이전</button>
+        <button class="result-button" type="button" id="nextButton">다음</button>
+      </div>
+    </main>
+
+    <dialog class="result-dialog" id="resultDialog">
+      <div class="result-card" id="resultCard">
+        <button class="close-button" type="button" id="closeDialog" aria-label="결과 닫기">×</button>
+        <div class="result-mascots" id="resultMascots" aria-hidden="true"></div>
+        <p class="result-kicker">건강덩균 TEST 결과</p>
+        <h2 id="resultTitle"></h2>
+        <div class="dialog-actions">
+          <button class="ghost-button" type="button" id="keepChoosingButton">계속 고르기</button>
+          <button class="result-button" type="button" id="restartButton">다시 하기</button>
+        </div>
+      </div>
+    </dialog>
+
+    <template id="typeCardTemplate">
+      <article class="type-card">
+        <div class="type-board"></div>
+      </article>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>

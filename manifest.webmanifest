@@ -1,0 +1,18 @@
+{
+  "name": "건강덩균 TEST",
+  "short_name": "건강덩균",
+  "description": "건이, 강이, 덩이, 균이 유형을 고르는 건강덩균 TEST",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7fbfa",
+  "theme_color": "#74d9d3",
+  "icons": [
+    {
+      "src": "assets/geoni-front.jpeg",
+      "sizes": "285x430",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}
